@@ -21,11 +21,20 @@
 ### Câu 3:
 
 - Liệt kê tất cả các test cases mà bạn có thể nghĩ ra để kiểm tra 1 mảng có phải là mảng số tăng dần hay không
-  - input: 1 => output: false
-  - input: '[ 1, 2, 3 ]' => output: false
-  - input: [ ] => output: false
-  - input: [ 1 ] => output: false
-  - input: [ 1, 2, '3', '4', '5' ] => output: false
-  - input: [ 1, 3, 5, [ 6, 7 ] ] => output: false
-  - input: [ 2, 1, 4, 5, 3, 8 ] => output: false
-  - input: [ 2, 3, 5, 7, 8, 10 ] => output: true
+  | Input | Output |
+  | :----: | :----: |
+  | null | false |
+  | undefined | false |
+  | 1 | false |
+  | '[1, 2, 3]' | false |
+  | '[ ]' | false |
+  | [ 1, 2, '3', '4', '5' ] | false |
+  | [ 1, 2, '3', '4', '5' ] | false |
+  | [ 1, 3, 5, [ 6, 7 ] ] | false |
+  | [ 2, 1, 4, 5, 3, 8 ] | false |
+  | [ 2, 1.5, 4, 5, 3.2, 8 ] | false |
+  | [ 2, 3, 5, 7, null ] | false |
+  | [ 2, 3, 5, 7, undefined ] | false |
+  | [ 2, 3, 5, 7, 8, 10 ] | true |
+  | [ 2, 3.3, 5, 7.5, 8, 10 ] | true |
+
