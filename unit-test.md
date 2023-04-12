@@ -3,11 +3,11 @@
 ### Câu 1:
 
 - Hãy nêu các bước viết unit test
-  - Define requirements
-  - Write a test
-  - Write a code
-  - Make the test pass
-  - Refactor
+  - Identify all possible case
+  - Specify parameters and expected results for each case
+  - Write test
+  - Execute test
+  - Evaluation and assessment of results
 
 ### Câu 2:
 
@@ -37,4 +37,3 @@
   | [ 2, 3, 5, 7, undefined ] | false |
   | [ 2, 3, 5, 7, 8, 10 ] | true |
   | [ 2, 3.3, 5, 7.5, 8, 10 ] | true |
-
