@@ -19,7 +19,7 @@ describe('Check auth storage service', () => {
 
   it ('Check removeItem called', () => {
     const removeItem = jest.spyOn(Storage.prototype, 'removeItem');
-    authStorageService.getToken();
+    authStorageService.removeToken();
     expect(removeItem).toBeCalled();
     expect(removeItem).toBeCalledWith('token');
   });
