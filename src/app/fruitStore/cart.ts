@@ -20,7 +20,7 @@ export class FruitStoreCart implements CartType {
   
   constructor(fruits: Fruit[]) {
     this.fruits = fruits;
-    this.totalPrice = 0;
+    this.totalPrice = this.calcTotalPrice();
   }
 
   getIndexFruitInCart(id: string) {
@@ -35,7 +35,7 @@ export class FruitStoreCart implements CartType {
       } else {
         this.fruits.push(fruit);
       }
-      this.calcTotalPrice();
+      this.totalPrice = this.calcTotalPrice();
     }
   }
 
@@ -45,7 +45,7 @@ export class FruitStoreCart implements CartType {
       return;
     }
       this.fruits = this.fruits.filter(item => item.id !== id);
-      this.calcTotalPrice();
+      this.totalPrice = this.calcTotalPrice();
   }
 
   editFruit(fruit: Fruit) {
@@ -58,7 +58,7 @@ export class FruitStoreCart implements CartType {
           }
           return item;
         });
-        this.calcTotalPrice();
+        this.totalPrice = this.calcTotalPrice();
       }
     }
   }
@@ -79,9 +79,12 @@ export class FruitStoreCart implements CartType {
   }
 
   calcTotalPrice () {
-    this.totalPrice = this.fruits.reduce((total, fruit: Fruit) => {
-      const discount = this.getDiscount(fruit);
-      return total + fruit.quantity * fruit.price * (100 - discount)/100;
+    return this.fruits.reduce((total, fruit: Fruit) => {
+      if (fruit) {
+        const discount = this.getDiscount(fruit);
+        return total + fruit.quantity * fruit.price * (100 - discount)/100;
+      }
+      return total;
     }, 0);
   }
 }

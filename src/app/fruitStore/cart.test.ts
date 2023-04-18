@@ -155,4 +155,31 @@ describe('Test order fruits', () => {
       expect(calcTotalPriceMock).toBeCalled();
     });
   });
+
+  describe('Test calcTotalPrice function', () => {
+    beforeEach(() => {
+      calcTotalPriceMock.mockClear();
+    });
+    const calcTotalPriceMock = jest.spyOn(FruitStoreCart.prototype, 'calcTotalPrice');
+    it ('Test calc cart empty', () => {
+      const cart = new FruitStoreCart([]);
+      expect(calcTotalPriceMock).toBeCalled();
+      expect(cart.totalPrice).toBe(0);
+    });
+    it ('Test calc cart', () => {
+      const cart = new FruitStoreCart([banana, orange]);
+      expect(calcTotalPriceMock).toBeCalled();
+      expect(cart.totalPrice).toBe(425700);
+    });
+    it ('Test calc cart has null', () => {
+      const cart = new FruitStoreCart([banana, null]);
+      expect(calcTotalPriceMock).toBeCalled();
+      expect(cart.totalPrice).toBe(223200);
+    });
+    it ('Test calc cart has undefined', () => {
+      const cart = new FruitStoreCart([banana, undefined]);
+      expect(calcTotalPriceMock).toBeCalled();
+      expect(cart.totalPrice).toBe(223200);
+    });
+  });
 });
