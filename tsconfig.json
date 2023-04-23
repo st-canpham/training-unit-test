@@ -29,7 +29,7 @@
     ]
   },
   "include": [
-    "./src/**/*",
+    "./src/**/*", "jest.config.ts",
   ],
   "exclude": [
     "dist",
