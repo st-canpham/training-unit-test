@@ -1,16 +1,8 @@
-export const onlyNumbers = (array): boolean => {
-  if (!Array.isArray(array)) {
+export const checkArrayAscending = (array: any): boolean => {
+  if (!Array.isArray(array) || array.length < 2) {
     return false;
   }
-  return array.every(element => {
-    return typeof element === 'number';
+  return array.every((item: number, index: number) => {
+    return typeof item === 'number' && (index === 0 || item >= array[index - 1]);
   });
-};
-
-export const checkArrayAscending = (array: number[]): boolean => {
-  if (!onlyNumbers(array) || array.length < 2) {
-    return false;
-  }
-  const newArray = [...array];
-  return JSON.stringify(newArray.sort((a, b) => a - b)) === JSON.stringify(array);
 };
